@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
 
         ButtonLogin.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
         }
 
         val url = "https://api.bartoliniemauiri.com/api/login"
