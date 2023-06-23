@@ -50,15 +50,23 @@
             app:strokeWidth="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--
     <androidx.fragment.app.FragmentContainerView
         android:name="com.example.bartolini_mauri_login.fragments.HomeFragment"
+        tools:layout="@layout/fragment_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        tools:layout="@layout/fragment_home" />
+        />
+        -->
+    <View
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
