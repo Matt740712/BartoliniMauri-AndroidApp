@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Bartolinimaurilogin"
         tools:targetApi="31" >
         <activity
-            android:name=".Home"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
