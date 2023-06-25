@@ -1,13 +1,8 @@
 import com.example.bartolini_mauri_login.models.LoginResponse
 import com.example.bartolini_mauri_login.models.customer.CustomerResponse
+import com.example.bartolini_mauri_login.models.policy.PolicyResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.HeaderMap
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface APIService {
     @FormUrlEncoded
@@ -17,9 +12,15 @@ interface APIService {
         @Field("password") password : String
     ) : Call<LoginResponse>
 
-    @GET("Customer/{id}")
+    @GET("Customer")
     fun getCustomer(
         @HeaderMap headers : Map<String, String>,
-        @Path("id") id: String
+        @Query("idCustomer") id: String
     ) : Call<CustomerResponse>
+
+    @GET("Contract")
+    fun getContracts(
+        @HeaderMap headers: Map<String, String>,
+        @Query("idCustomer") id: String
+    ) : Call<PolicyResponse>
 }

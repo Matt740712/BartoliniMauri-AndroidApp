@@ -7,10 +7,12 @@
     android:layout_height="275dp">
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="300dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="-70dp"
         android:alpha=".7"
-        android:src="@drawable/baseline_directions_car_24"
+        android:scaleType="centerCrop"
+        android:src="@drawable/auto_storica_svg_colorato"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent" />
 

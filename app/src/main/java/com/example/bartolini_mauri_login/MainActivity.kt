@@ -61,6 +61,10 @@ class MainActivity : AppCompatActivity() {
 
         val headers = HashMap<String, String>()
         headers.put("Authorization", "Bearer $token")
+        headers.put("Content-Type", "application/json; charset=utf-8")
+        headers.put("Cache-Control", "no-cache")
+        headers.put("Accept-Encoding", "gzip, deflate, br")
+        headers.put("Connection", "keep-alive")
 
         val retrofitData = retrofitBuilder.getCustomer(headers, id)
 
@@ -113,7 +117,7 @@ class MainActivity : AppCompatActivity() {
                     sharedPref.edit().putString("token", responseBody!!.data.jwt).apply()
                     sharedPref.edit().putString("id", responseBody!!.data.idCustomer).apply()
 
-                    startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+                    getCustomer(responseBody!!.data.idCustomer, responseBody!!.data.jwt)
                 }else{
                     // TODO: Mostrare nella UI che username o password non sono validi
                 }

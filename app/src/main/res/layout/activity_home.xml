@@ -18,40 +18,42 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/icon_b_m"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/nameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:text="Ciao Marianna"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
             android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:text="LA TUA AGENZIA"
+            android:textColor="#F00"
+            android:textSize="12sp"
+            android:textStyle="bold"
             app:icon="@drawable/baseline_call_24"
             app:iconGravity="start"
-            android:text="LA TUA AGENZIA"
-            android:textSize="8sp"
-            android:textColor="#F00"
-            app:iconTint="#F00"
             app:iconSize="16dp"
+            app:iconTint="#F00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="#F00"
             app:strokeWidth="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/body"
         android:name="com.example.bartolini_mauri_login.fragments.HomeFragment"
         tools:layout="@layout/fragment_home"
         android:layout_width="match_parent"
@@ -60,12 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        />
-        -->
-    <View
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:background="@color/white"
         />
 
     <LinearLayout
@@ -76,28 +72,76 @@
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:src="@drawable/baseline_home_24" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_home_24" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="@string/home"
+                />
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:src="@drawable/baseline_home_24" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_home_24" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="@string/assistenza"
+                />
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:src="@drawable/baseline_home_24" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_home_24" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="@string/preventivi"
+                />
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:src="@drawable/baseline_home_24" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_home_24" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="@string/profilo"
+                />
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
