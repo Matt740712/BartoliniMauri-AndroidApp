@@ -5,29 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bartolini_mauri_login.R
+import com.example.bartolini_mauri_login.ViewModels.MainViewModel
+import com.example.bartolini_mauri_login.adapters.PolicyAdapter
+import com.example.bartolini_mauri_login.models.policy.Policy
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private val viewModel : MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -38,23 +30,51 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.policies.observe(viewLifecycleOwner){policies ->
+
+            val carPolicies = ArrayList<Policy>()
+            val historicCarPolicies = ArrayList<Policy>()
+            val homeFamilyPolicies = ArrayList<Policy>()
+
+            for (policy in policies){
+                if(policy.title.equals("AUTO E MOTORI")){
+                    carPolicies.add(policy)
+                }
+                else if(policy.title.equals("AUTO STORICA")){
+                    historicCarPolicies.add(policy)
+                }
+                else if(policy.title.equals("CASA E FAMIGLIA")){
+                    homeFamilyPolicies.add(policy)
                 }
             }
+
+            val policiesRecycler = view.findViewById<RecyclerView>(R.id.auto_policies_recycler)
+            val policiesAdapter = PolicyAdapter(carPolicies, R.layout.view_policy_auto)
+
+            policiesRecycler.apply {
+                adapter = policiesAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+
+            val historic_car_policiesRecycler = view.findViewById<RecyclerView>(R.id.historic_auto_policies_recycler)
+            val historic_car_policiesAdapter = PolicyAdapter(historicCarPolicies, R.layout.view_policy_storica)
+
+            historic_car_policiesRecycler.apply {
+                adapter = historic_car_policiesAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+
+            val homeFamilyRecycler = view.findViewById<RecyclerView>(R.id.home_family_policies_recycler)
+            val homeFamilyAdapter = PolicyAdapter(homeFamilyPolicies, R.layout.view_policy_casa_famiglia)
+
+            homeFamilyRecycler.apply {
+                adapter = homeFamilyAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+        }
     }
+
 }
