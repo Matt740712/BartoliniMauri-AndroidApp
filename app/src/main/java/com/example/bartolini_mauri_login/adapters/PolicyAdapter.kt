@@ -11,11 +11,11 @@ import com.example.bartolini_mauri_login.R
 import com.example.bartolini_mauri_login.models.policy.Policy
 import java.util.*
 
-class PolicyAdapter(private var policies: ArrayList<Policy>): RecyclerView.Adapter<PolicyAdapter.CustomViewHolder>() {
+class PolicyAdapter(private var policies: ArrayList<Policy>, val layout: Int): RecyclerView.Adapter<PolicyAdapter.CustomViewHolder>() {
     class CustomViewHolder(val view: ViewGroup) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_policy_auto, parent, false) as ViewGroup
+        val view = LayoutInflater.from(parent.context).inflate(layout, parent, false) as ViewGroup
         return CustomViewHolder(view)
     }
 

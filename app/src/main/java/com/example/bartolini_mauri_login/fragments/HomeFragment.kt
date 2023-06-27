@@ -35,18 +35,43 @@ class HomeFragment : Fragment() {
 
         viewModel.policies.observe(viewLifecycleOwner){policies ->
 
-            val autoPolicies = ArrayList<Policy>()
+            val carPolicies = ArrayList<Policy>()
+            val historicCarPolicies = ArrayList<Policy>()
+            val homeFamilyPolicies = ArrayList<Policy>()
+
             for (policy in policies){
                 if(policy.title.equals("AUTO E MOTORI")){
-                    autoPolicies.add(policy)
+                    carPolicies.add(policy)
+                }
+                else if(policy.title.equals("AUTO STORICA")){
+                    historicCarPolicies.add(policy)
+                }
+                else if(policy.title.equals("CASA E FAMIGLIA")){
+                    homeFamilyPolicies.add(policy)
                 }
             }
 
             val policiesRecycler = view.findViewById<RecyclerView>(R.id.auto_policies_recycler)
-            val policiesAdapter = PolicyAdapter(autoPolicies)
+            val policiesAdapter = PolicyAdapter(carPolicies, R.layout.view_policy_auto)
 
             policiesRecycler.apply {
                 adapter = policiesAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+
+            val historic_car_policiesRecycler = view.findViewById<RecyclerView>(R.id.historic_auto_policies_recycler)
+            val historic_car_policiesAdapter = PolicyAdapter(historicCarPolicies, R.layout.view_policy_storica)
+
+            historic_car_policiesRecycler.apply {
+                adapter = historic_car_policiesAdapter
+                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            }
+
+            val homeFamilyRecycler = view.findViewById<RecyclerView>(R.id.home_family_policies_recycler)
+            val homeFamilyAdapter = PolicyAdapter(homeFamilyPolicies, R.layout.view_policy_casa_famiglia)
+
+            homeFamilyRecycler.apply {
+                adapter = homeFamilyAdapter
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             }
         }
