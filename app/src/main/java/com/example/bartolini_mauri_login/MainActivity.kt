@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             if (id != null && token != null) {
                 getCustomer(id, token)
             }
-            this.setKeepOnScreenCondition{
+            this.setKeepOnScreenCondition {
                 isLoading
             }
         }
@@ -75,10 +75,10 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val data = response.body()
 
-                if(data === null){
+                if (data === null) {
                     // To login
                     isLoading = false
-                }else{
+                } else {
                     isLoading = false
                     val intent = Intent(this@MainActivity, HomeActivity::class.java)
                     val customer = data.data as Customer
@@ -102,8 +102,10 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(APIService::class.java)
 
-        // TODO: Username e password da sostituire con i campi
-        val retrofitData = retrofitBuilder.login("TRNVTR90T07Z611O", "YvYx3PYy")
+        val username = "TRNVTR90T07Z611O" // Sostituisco con il campo per l'username
+        val password = "YvYx3PYy" // Sostituisco con il campo per la password
+
+        val retrofitData = retrofitBuilder.login(username, password)
 
         retrofitData.enqueue(object : Callback<LoginResponse?> {
             override fun onResponse(
@@ -112,13 +114,14 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val responseBody = response.body()
 
-                if(responseBody?.data !== null){
-                    val sharedPref = this@MainActivity.getSharedPreferences("shared", Context.MODE_PRIVATE)
+                if (responseBody?.data !== null) {
+                    val sharedPref =
+                        this@MainActivity.getSharedPreferences("shared", Context.MODE_PRIVATE)
                     sharedPref.edit().putString("token", responseBody!!.data.jwt).apply()
                     sharedPref.edit().putString("id", responseBody!!.data.idCustomer).apply()
 
                     getCustomer(responseBody!!.data.idCustomer, responseBody!!.data.jwt)
-                }else{
+                } else {
                     // TODO: Mostrare nella UI che username o password non sono validi
                 }
             }
@@ -129,6 +132,5 @@ class MainActivity : AppCompatActivity() {
         })
     }
 }
-
 
 
