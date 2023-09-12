@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="20dp"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -98,7 +98,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:src="@drawable/baseline_home_24" />
+                android:src="@drawable/baseline_assistance_24" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:src="@drawable/baseline_home_24" />
+                android:src="@drawable/baseline_bank_24" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:src="@drawable/baseline_home_24" />
+                android:src="@drawable/person_24" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
