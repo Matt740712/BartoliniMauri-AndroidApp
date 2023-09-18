@@ -1,8 +1,10 @@
 package com.example.bartolini_mauri_login
 
 import APIService
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -14,6 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.view.View
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -25,7 +28,6 @@ class HomeActivity : AppCompatActivity() {
 
         val name = intent.getStringExtra("customerName")
         binding.nameText.text = "Ciao, $name"
-
 
         val sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE)
         val id = sharedPref.getString("id", "")
@@ -63,5 +65,12 @@ class HomeActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    @SuppressLint("MissingPermission")
+    fun onLayoutAssistanceClick(view: View) {
+        // Avvia l'Activity AssistanceActivity
+        val intent = Intent(this, AssistanceActivity::class.java)
+        startActivity(intent)
     }
 }
