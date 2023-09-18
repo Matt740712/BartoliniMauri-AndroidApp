@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".AssistanceActivity"
+    android:background="@color/blulight">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -23,15 +24,6 @@
             android:src="@drawable/icon_b_m"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Ciao Marianna"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton"
@@ -52,17 +44,122 @@
             app:strokeWidth="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/body"
-        android:name="com.example.bartolini_mauri_login.fragments.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="ASSISTENZA"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Come possiamo aiutarti?"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="DOVE TROVARCI"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/EmailButton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="232dp"
+        android:padding="10dp"
+        android:text="Email"
+        android:textColor="#F00"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_email_24"
+        app:iconGravity="start"
+        app:iconSize="25dp"
+        app:iconTint="#F00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#F00"
+        app:strokeWidth="1dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Via Lessolo 19, 10153 Torino (TO)"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/PositionButton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="232dp"
+        android:padding="10dp"
+        android:text="Sede"
+        android:textColor="#F00"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_domain_24"
+        app:iconGravity="start"
+        app:iconSize="25dp"
+        app:iconTint="#F00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#F00"
+        app:strokeWidth="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/TelefonoButton"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="44dp"
+        android:padding="10dp"
+        android:text="Contatti"
+        android:textColor="#F00"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_call_24"
+        app:iconGravity="start"
+        app:iconSize="25dp"
+        app:iconTint="#F00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#F00"
+        app:strokeWidth="1dp" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -73,10 +170,14 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/LayoutHome"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onLayoutAssistanceClick"
+            tools:ignore="OnClick">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -95,9 +196,7 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onLayoutAssistanceClick">
+            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -148,3 +247,4 @@
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
