@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".PreventiviActivity"
+    android:background="@color/blulight">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -23,15 +24,6 @@
             android:src="@drawable/icon_b_m"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/nameText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Ciao Marianna"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton"
@@ -52,17 +44,17 @@
             app:strokeWidth="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/body"
-        android:name="com.example.bartolini_mauri_login.fragments.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="112dp"
+        android:text="FAI UN NUOVO PREVENTIVO"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -73,10 +65,14 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/LayoutHome"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onLayoutAssistanceClick"
+            tools:ignore="OnClick">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -95,10 +91,7 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onLayoutAssistanceClick"
-            tools:ignore="OnClick">
+            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -113,13 +106,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/LayoutPreventivi"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onLayoutPreventiviClick"
-            >
+            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -134,12 +124,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutProfilo"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onLayoutProfiloClick">
+            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"

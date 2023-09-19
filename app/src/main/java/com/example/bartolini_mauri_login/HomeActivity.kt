@@ -20,7 +20,7 @@ import android.view.View
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private val viewModel : MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
             ) {
                 val responseBody = response.body()
 
-                if(responseBody?.data !== null){
+                if (responseBody?.data !== null) {
                     viewModel.policies.value = responseBody.data
                 }
             }
@@ -71,6 +71,20 @@ class HomeActivity : AppCompatActivity() {
     fun onLayoutAssistanceClick(view: View) {
         // Avvia l'Activity AssistanceActivity
         val intent = Intent(this, AssistanceActivity::class.java)
+        startActivity(intent)
+    }
+
+    @SuppressLint("MissingPermission")
+    fun onLayoutPreventiviClick(view: View) {
+        // Avvia l'Activity PreventiviActivity
+        val intent = Intent(this, PreventiviActivity::class.java)
+        startActivity(intent)
+    }
+
+    @SuppressLint("MissingPermission")
+    fun onLayoutProfiloClick(view: View) {
+        // Avvia l'Activity PreventiviActivity
+        val intent = Intent(this, PreventiviActivity::class.java)
         startActivity(intent)
     }
 }
