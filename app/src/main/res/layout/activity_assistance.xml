@@ -25,6 +25,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/assistenzaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Assistenza"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton"
             android:layout_width="160dp"
@@ -51,7 +60,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="ASSISTENZA"
-        android:textSize="20dp"
+        android:textSize="22dp"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +74,7 @@
         android:text="Come possiamo aiutarti?"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="15dp"
+        android:textSize="17dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -75,10 +84,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="DOVE TROVARCI"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="22dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailButton" />
@@ -88,7 +97,7 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="232dp"
         android:padding="10dp"
         android:text="Email"
@@ -112,7 +121,7 @@
         android:layout_marginTop="15dp"
         android:text="Via Lessolo 19, 10153 Torino (TO)"
         android:textColor="@color/black"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -123,7 +132,7 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginTop="370dp"
         android:layout_marginEnd="232dp"
         android:padding="10dp"
         android:text="Sede"
@@ -144,7 +153,8 @@
         android:id="@+id/TelefonoButton"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="44dp"
         android:padding="10dp"
         android:text="Contatti"
@@ -156,10 +166,23 @@
         app:iconSize="25dp"
         app:iconTint="#F00"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/EmailButton"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#F00"
         app:strokeWidth="1dp" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Domande frequenti"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PositionButton" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -170,14 +193,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
-            android:id="@+id/LayoutHome"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onLayoutAssistanceClick"
-            tools:ignore="OnClick">
+            android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -196,7 +216,10 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onLayoutAssistanceClick"
+            tools:ignore="OnClick">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -211,10 +234,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/LayoutPreventivi"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="onLayoutPreventiviClick"
+            >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -229,10 +255,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layoutProfilo"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="onLayoutProfiloClick">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"

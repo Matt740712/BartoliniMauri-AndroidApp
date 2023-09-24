@@ -84,7 +84,7 @@ class HomeActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     fun onLayoutProfiloClick(view: View) {
         // Avvia l'Activity PreventiviActivity
-        val intent = Intent(this, PreventiviActivity::class.java)
+        val intent = Intent(this, ProfiloActivity::class.java)
         startActivity(intent)
     }
 }
