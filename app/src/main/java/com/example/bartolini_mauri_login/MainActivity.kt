@@ -3,11 +3,15 @@ package com.example.bartolini_mauri_login
 import APIService
 import android.content.Context
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.ViewModelProvider
+import com.example.bartolini_mauri_login.NetworkManager.Companion.getCustomer
+import com.example.bartolini_mauri_login.NetworkManager.Companion.login
+import com.example.bartolini_mauri_login.ViewModels.MainViewModel
 import com.example.bartolini_mauri_login.models.LoginResponse
 import com.example.bartolini_mauri_login.models.customer.Customer
 import com.example.bartolini_mauri_login.models.customer.CustomerResponse
@@ -34,6 +38,15 @@ class MainActivity : AppCompatActivity() {
             this.setKeepOnScreenCondition {
                 isLoading
             }
+        }
+
+        setContentView(R.layout.activity_main)
+        val username = findViewById<TextInputEditText>(R.id.Username)
+        val password = findViewById<TextInputEditText>(R.id.Password)
+        val ButtonLogin = findViewById<Button>(R.id.ButtonLogin)
+
+        ButtonLogin.setOnClickListener {
+            login()
         }
 
 
@@ -82,23 +95,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun login(username: String,password: String) {
+    fun login() {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.bartoliniemauri.com/api/")
             .build()
             .create(APIService::class.java)
 
-
         val username = "TRNVTR90T07Z611O" // Sostituisco con il campo per l'username
         val password = "YvYx3PYy" // Sostituisco con il campo per la password
-
-        //val username = binding.username.text.toString()
-        //val password = binding.password.text.toString()
-
-
-
-        // TODO: Username e password da sostituire con i campi
 
         val retrofitData = retrofitBuilder.login(username, password)
 
@@ -118,18 +123,15 @@ class MainActivity : AppCompatActivity() {
                     getCustomer(responseBody!!.data.idCustomer, responseBody!!.data.jwt)
                 } else {
                     // TODO: Mostrare nella UI che username o password non sono validi
-                    Toast.makeText(this@MainActivity, "Username o password non validi", Toast.LENGTH_SHORT).show()
-
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {
                 // TODO: Mostrare nella UI che username o password non sono validi
-                    Toast.makeText(this@MainActivity, "Username o password non validi", Toast.LENGTH_SHORT).show()
-
             }
         })
     }
 }
+
 
 
