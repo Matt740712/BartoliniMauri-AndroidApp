@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -17,6 +18,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.view.View
+import android.widget.Button
+import com.google.android.material.button.MaterialButton
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -35,6 +38,12 @@ class HomeActivity : AppCompatActivity() {
 
         if (id != null && token != null) {
             getContracts(id, token)
+        }
+        val materialButton = findViewById<MaterialButton>(R.id.materialButton)
+        materialButton.setOnClickListener {
+            val callIntent = Intent(Intent.ACTION_DIAL)
+            callIntent.data = Uri.parse("tel:3474536349")
+            startActivity(callIntent)
         }
     }
 
