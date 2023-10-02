@@ -22,10 +22,11 @@ class AssistanceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assistance)
 
+
         val agenziaButton = findViewById<MaterialButton>(R.id.agenziaButton)
         agenziaButton.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_DIAL)
-            callIntent.data = Uri.parse("tel:3770905411")
+            callIntent.data = Uri.parse("tel:011 7410 958")
             startActivity(callIntent)
         }
         //val mapIntent alternativo con https perche l'altro non funziona
@@ -38,9 +39,26 @@ class AssistanceActivity : AppCompatActivity() {
             )
             startActivity(mapIntent)
         })
+        val emailButton = findViewById<MaterialButton>(R.id.EmailButton)
+        emailButton.setOnClickListener {
+            val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "azienda@bartoliniemauri.com", null))
+            startActivity(Intent.createChooser(emailIntent, "Invia email"))
+        }
     }
 
-    fun onLayoutAssistanceClick(view: View) {
+    fun onLayoutProfiloClick(view: View) {
+        // Avvia l'Activity HomeActivity
+        val intent = Intent(this, ProfiloActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onLayoutPreventiviClick(view: View) {
+        // Avvia l'Activity HomeActivity
+        val intent = Intent(this, PreventiviActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onLayoutHomeClick(view: View) {
         // Avvia l'Activity HomeActivity
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)

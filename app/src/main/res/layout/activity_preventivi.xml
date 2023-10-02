@@ -75,14 +75,10 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
-            android:id="@+id/LayoutHome"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="onLayoutAssistanceClick"
-            tools:ignore="OnClick">
+            android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -101,7 +97,10 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onLayoutAssistanceClick"
+            tools:ignore="OnClick">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -116,10 +115,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/LayoutPreventivi"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="onLayoutPreventiviClick"
+            >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
@@ -134,10 +136,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layoutProfilo"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="onLayoutProfiloClick">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"

@@ -42,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
         val materialButton = findViewById<MaterialButton>(R.id.materialButton)
         materialButton.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_DIAL)
-            callIntent.data = Uri.parse("tel:3474536349")
+            callIntent.data = Uri.parse("tel:011 7410 958")
             startActivity(callIntent)
         }
     }

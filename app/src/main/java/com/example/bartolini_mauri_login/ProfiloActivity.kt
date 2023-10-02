@@ -17,7 +17,7 @@ class ProfiloActivity : AppCompatActivity() {
         val materialButton = findViewById<MaterialButton>(R.id.materialButton)
         materialButton.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_DIAL)
-            callIntent.data = Uri.parse("tel:3474536349")
+            callIntent.data = Uri.parse("tel:011 7410 958")
             startActivity(callIntent)
         }
 
@@ -39,5 +39,22 @@ class ProfiloActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish() // Chiudi l'activity corrente
+    }
+    fun onLayoutPreventiviClick(view: View) {
+        // Avvia l'Activity HomeActivity
+        val intent = Intent(this, PreventiviActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onLayoutAssistanceClick(view: View) {
+        // Avvia l'Activity HomeActivity
+        val intent = Intent(this, AssistanceActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onLayoutHomeClick(view: View) {
+        // Avvia l'Activity HomeActivity
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 }
