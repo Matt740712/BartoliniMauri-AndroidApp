@@ -23,7 +23,8 @@
             android:layout_height="60dp"
             android:src="@drawable/icon_b_m"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/profiloText"
@@ -76,7 +77,7 @@
         android:background="@android:color/transparent"
         android:text="Logout"
         android:textColor="#FF0000"
-        android:textSize="10dp"
+        android:textSize="12dp"
         android:textStyle="bold"
         app:icon="@drawable/exit_to_app_24"
         app:iconGravity="start"
@@ -128,18 +129,28 @@
         app:strokeColor="#F00"
         app:strokeWidth="1dp" />
 
+
     <TextView
-        android:id="@+id/InfoPrivay"
+        android:id="@+id/nomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="584dp"
-        android:clickable="true"
-        android:onClick="apriInformativaPrivacy"
-        android:text="Informativa sulla privacy"
-        android:textColor="#5D6B6B"
-        android:textStyle="bold"
+        android:layout_marginTop="320dp"
+        android:text="Nome:"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/privacyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="572dp"
+        android:layout_marginEnd="196dp"
+        android:background="@android:color/transparent"
+        android:text="Informazioni sulla privacy"
+        android:textColor="@color/grigioU"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
