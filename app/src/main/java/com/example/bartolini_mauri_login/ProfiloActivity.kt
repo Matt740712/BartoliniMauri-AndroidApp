@@ -14,6 +14,15 @@ class ProfiloActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilo)
 
+        //Todo: File quando clcci i tuoi documenti
+        val documentiButton = findViewById<MaterialButton>(R.id.DocumentiButton)
+        documentiButton.setOnClickListener {
+            val pdfUrl = "https://www.its-ictpiemonte.it/wp-content/uploads/2023/10/1_RiaperturaAvvisoPubblicoSelezioneStudenti_bf23-25.pdf"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(pdfUrl)
+            startActivity(intent)
+        }
+        //Todo: File della privacy
         val privacyButton = findViewById<Button>(R.id.privacyButton)
         privacyButton.setOnClickListener {
             val pdfUrl =
@@ -28,7 +37,7 @@ class ProfiloActivity : AppCompatActivity() {
             performLogout()
             finishAffinity()
         }
-
+        //TODO Bottone Conatto N.telefono
         val materialButton = findViewById<MaterialButton>(R.id.materialButton)
         materialButton.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_DIAL)
@@ -38,17 +47,17 @@ class ProfiloActivity : AppCompatActivity() {
     }
 
     private fun performLogout() {
-        // Rimuovi le informazioni di accesso dal SharedPreferences
+        //Todo Rimuovi le informazioni di accesso dal SharedPreferences
         val sharedPref = getSharedPreferences("shared", MODE_PRIVATE)
         sharedPref.edit()
             .remove("token")
             .remove("id")
             .apply()
 
-        // Avvia l'activity di login
+
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        finish() // Chiudi l'activity corrente
+        finish()
     }
 
     fun onLayoutPreventiviClick(view: View?) {

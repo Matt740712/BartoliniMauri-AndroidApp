@@ -29,7 +29,7 @@ class AssistanceActivity : AppCompatActivity() {
             callIntent.data = Uri.parse("tel:011 7410 958")
             startActivity(callIntent)
         }
-        //val mapIntent alternativo con https perche l'altro non funziona
+        // TODO: val mapIntent alternativo con https perche l'altro non funziona
         positionButton = findViewById(R.id.PositionButton)
         positionButton.setOnClickListener(View.OnClickListener {
             val gmmIntentUri = Uri.parse("geo:45.071074,7.712098")

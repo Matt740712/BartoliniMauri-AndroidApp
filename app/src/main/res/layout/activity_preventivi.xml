@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PreventiviActivity"
-    android:background="@color/blulight">
+    android:background="@color/blulight"
+    android:visibility="visible"
+    tools:context=".PreventiviActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -24,6 +25,7 @@
             android:src="@drawable/icon_b_m"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/preventiviText"
             android:layout_width="wrap_content"
@@ -58,13 +60,124 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="112dp"
-        android:text="FAI UN NUOVO PREVENTIVO"
+        android:text="CALCOLA UN NUOVO PREVENTIVO"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="168dp"
+        android:text="Veicolo:"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/vehicle_spinner"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="164dp"
+        android:entries="@array/vehicle_choices"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/annoAuto"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/edittext_border"
+        android:hint="L'ANNO Es:(2023)"
+        android:inputType="number"
+        android:maxLength="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
+
+
+    <EditText
+        android:id="@+id/targaAuto"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="280dp"
+        android:background="@drawable/edittext_border"
+        android:hint="TARGA Es:(AB321CD)"
+        android:maxLength="7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/ModelloAuto"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/edittext_border"
+        android:gravity="center"
+        android:hint="Altro Es:(AB321CD)"
+        android:maxLength="7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="234dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/GPL1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GPL" />
+
+        <RadioButton
+            android:id="@+id/Benzina2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Benzina" />
+
+        <RadioButton
+            android:id="@+id/Eletrico3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eletrico" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/Preventivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="154dp"
+        android:layout_marginBottom="19dp"
+        android:onClick="calcolaPreventivo"
+        android:text="Calcola"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -75,84 +188,90 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_home_24" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textStyle="bold"
                 android:text="@string/home"
-                />
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LayoutAssistance"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:clickable="true"
             android:onClick="onLayoutAssistanceClick"
+            android:orientation="vertical"
             tools:ignore="OnClick">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_assistance_24" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textStyle="bold"
                 android:text="@string/assistenza"
-                />
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/LayoutPreventivi"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="onLayoutPreventiviClick"
-            >
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:src="@drawable/baseline_preventivi_24" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textStyle="bold"
                 android:text="@string/preventivi"
-                />
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutProfilo"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onLayoutProfiloClick">
+            android:layout_weight="1"
+            android:onClick="onLayoutProfiloClick"
+            android:orientation="vertical">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:src="@drawable/person_24" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textStyle="bold"
                 android:text="@string/profilo"
-                />
+                android:textAlignment="center"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

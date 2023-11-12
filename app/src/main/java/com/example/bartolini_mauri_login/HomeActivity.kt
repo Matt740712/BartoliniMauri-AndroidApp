@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         val name = intent.getStringExtra("customerName")
         binding.nameText.text = "Ciao, $name"
 
-        val sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("shared", MODE_PRIVATE)
         val id = sharedPref.getString("id", "")
         val token = sharedPref.getString("token", "")
 
@@ -76,23 +76,17 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-    @SuppressLint("MissingPermission")
     fun onLayoutAssistanceClick(view: View) {
-        // Avvia l'Activity AssistanceActivity
         val intent = Intent(this, AssistanceActivity::class.java)
         startActivity(intent)
     }
 
-    @SuppressLint("MissingPermission")
     fun onLayoutPreventiviClick(view: View) {
-        // Avvia l'Activity PreventiviActivity
         val intent = Intent(this, PreventiviActivity::class.java)
         startActivity(intent)
     }
 
-    @SuppressLint("MissingPermission")
     fun onLayoutProfiloClick(view: View) {
-        // Avvia l'Activity PreventiviActivity
         val intent = Intent(this, ProfiloActivity::class.java)
         startActivity(intent)
     }

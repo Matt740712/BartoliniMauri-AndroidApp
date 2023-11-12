@@ -1,0 +1,5 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- Colore di sfondo della cornice -->
+    <stroke android:color="#000000" android:width="2dp" /> <!-- Colore e spessore della cornice -->
+    <corners android:radius="6dp" /> <!-- Arrotondamento degli angoli -->
+</shape>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vehicle_choices">
+        <item>Automobile</item>
+        <item>Motociclo</item>
+        <item>Ciclomotore</item>
+        <item>Autocarro</item>
+    </string-array>
+</resources>

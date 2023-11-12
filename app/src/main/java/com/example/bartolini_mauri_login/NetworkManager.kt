@@ -14,15 +14,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkManager {
     companion object {
-        fun login(context : AppCompatActivity) {
+        fun login(context : AppCompatActivity, username: String, password: String) {
             val retrofitBuilder = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://api.bartoliniemauri.com/api/")
                 .build()
                 .create(APIService::class.java)
 
-            // TODO: Username e password da sostituire con i campi
-            val retrofitData = retrofitBuilder.login("TRNVTR90T07Z611O", "YvYx3PYy")
+            val retrofitData = retrofitBuilder.login(username, password)
 
             retrofitData.enqueue(object : Callback<LoginResponse?> {
                 override fun onResponse(
@@ -33,20 +32,22 @@ class NetworkManager {
 
                     if(responseBody?.data !== null){
                         val sharedPref = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
-                        sharedPref.edit().putString("token", responseBody!!.data.jwt).apply()
-                        sharedPref.edit().putString("id", responseBody!!.data.idCustomer).apply()
+                        sharedPref.edit().putString("token", responseBody.data.jwt).apply()
+                        sharedPref.edit().putString("id", responseBody.data.idCustomer).apply()
 
                         context.startActivity(Intent(context, HomeActivity::class.java))
+                    } else {
+                        // TODO: Mostrare nella UI che username o password non sono validi
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    // TODO: Mostrare nella UI che username o password non sono validi
                 }
             })
         }
 
-        fun getCustomer(id: String, token: String) {
+        fun getCustomer(context: AppCompatActivity, id: String, token: String) {
             val retrofitBuilder = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://api.bartoliniemauri.com/api/")
@@ -54,7 +55,7 @@ class NetworkManager {
                 .create(APIService::class.java)
 
             val headers = HashMap<String, String>()
-            headers.put("Autorization", "Bearer $token")
+            headers.put("Authorization", "Bearer $token")
 
             val retrofitData = retrofitBuilder.getCustomer(headers, id)
 
@@ -67,19 +68,16 @@ class NetworkManager {
 
                     if(data === null){
                         // To login
-
-                    }else{
-
+                        context.startActivity(Intent(context, MainActivity::class.java))
+                    } else {
+                        context.startActivity(Intent(context, HomeActivity::class.java))
                     }
-
-
                 }
 
                 override fun onFailure(call: Call<CustomerResponse?>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    // TODO: Mostrare nella UI che username o password non sono validi
                 }
             })
-
         }
     }
 }

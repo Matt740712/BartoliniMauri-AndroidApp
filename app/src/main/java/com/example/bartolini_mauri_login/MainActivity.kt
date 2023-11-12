@@ -3,6 +3,7 @@ package com.example.bartolini_mauri_login
 import APIService
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -15,6 +16,7 @@ import com.example.bartolini_mauri_login.ViewModels.MainViewModel
 import com.example.bartolini_mauri_login.models.LoginResponse
 import com.example.bartolini_mauri_login.models.customer.Customer
 import com.example.bartolini_mauri_login.models.customer.CustomerResponse
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Todo : verificato se l'utente ha già effettuato il login salvando l'id e il token dell'utente nelle preferenze
         installSplashScreen().apply {
             val sharedPref = getSharedPreferences("shared", Context.MODE_PRIVATE)
             val id = sharedPref.getString("id", "")
@@ -48,7 +51,13 @@ class MainActivity : AppCompatActivity() {
         ButtonLogin.setOnClickListener {
             login()
         }
+        val contactButton: MaterialButton = findViewById(R.id.ContactButton)
 
+        contactButton.setOnClickListener {
+            val websiteUrl = "https://bartoliniemauri.com/contatti/"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl))
+            startActivity(intent)
+        }
 
     }
 
@@ -102,8 +111,8 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(APIService::class.java)
 
-        val username = "TRNVTR90T07Z611O" // Sostituisco con il campo per l'username
-        val password = "YvYx3PYy" // Sostituisco con il campo per la password
+        val username = "TRNVTR90T07Z611O" // da sostituire con il campo per l'username
+        val password = "YvYx3PYy" // da sostituire con  il campo per la password
 
         val retrofitData = retrofitBuilder.login(username, password)
 

@@ -1,5 +1,7 @@
 package com.example.bartolini_mauri_login.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -33,6 +35,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /*val openLinkButton = view.findViewById<View>(R.id.File)
+        openLinkButton.setOnClickListener {
+            val url = "https://bartoliniemauri.com/wp-content/uploads/2021/04/Allegato-3-fac-simile.pdf"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
+*/
+        //Todo:aggiustare
         viewModel.policies.observe(viewLifecycleOwner){policies ->
 
             val carPolicies = ArrayList<Policy>()
