@@ -68,7 +68,7 @@ class PreventiviActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun calcolaPreventivo() {
-        var costoAssicurazione = 0 // Resetta la variabile costoAssicurazione
+        var costoAssicurazione = 0
 
         val annoAuto = annoAutoEditText.text.toString().toIntOrNull()
         val targaAuto = targaAutoEditText.text.toString()
@@ -98,10 +98,23 @@ class PreventiviActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-        // Azioni da eseguire alla selezione di un elemento dallo spinner
+
     }
 
     override fun onNothingSelected(parent: AdapterView<*>) {
-        // Nessuna azione necessaria
+
+    }
+    fun onLayoutAssistanceClick(view: View) {
+        val intent = Intent(this, AssistanceActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onLayoutHomeClick(view: View?) {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+    fun onLayoutProfiloClick(view: View) {
+        val intent = Intent(this, ProfiloActivity::class.java)
+        startActivity(intent)
     }
 }
