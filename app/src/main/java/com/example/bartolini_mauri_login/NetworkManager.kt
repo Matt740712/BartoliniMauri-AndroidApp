@@ -14,6 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkManager {
     companion object {
+
+
+        // Todo: prende in input un oggetto Context, una stringa "username" e una stringa "password".
+        //  Questo metodo effettua una richiesta di login al server utilizzando l'API di Retrofit.
+        //  Vengono impostati l'URL di base dell'API e un convertitore Gson per convertire la risposta in oggetti Java.
+        //  Viene costruito un oggetto APIService tramite Retrofit.Builder()
         fun login(context : AppCompatActivity, username: String, password: String) {
             val retrofitBuilder = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -37,16 +43,20 @@ class NetworkManager {
 
                         context.startActivity(Intent(context, HomeActivity::class.java))
                     } else {
-                        // TODO: Mostrare nella UI che username o password non sono validi
+                        // TODO: Mostra nella UI che username o password non sono validi
                     }
                 }
 
                 override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {
-                    // TODO: Mostrare nella UI che username o password non sono validi
+                    // TODO: Mostra nella UI che username o password non sono validi
                 }
             })
         }
 
+        //Todo: Prende in input un oggetto Context, una stringa "id" e una stringa "token".
+        // Viene costruito un oggetto APIService e viene chiamato il metodo "getCustomer" sull'oggetto APIService,
+        // passando l'ID del cliente e il token come parametri della richiesta. Viene aggiunta una Callback per gestire la risposta della richiesta.
+        // Nella funzione onResponse, viene recuperato la risposta.
         fun getCustomer(context: AppCompatActivity, id: String, token: String) {
             val retrofitBuilder = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -75,7 +85,7 @@ class NetworkManager {
                 }
 
                 override fun onFailure(call: Call<CustomerResponse?>, t: Throwable) {
-                    // TODO: Mostrare nella UI che username o password non sono validi
+                    // TODO: Mostra nella UI che username o password non sono validi
                 }
             })
         }

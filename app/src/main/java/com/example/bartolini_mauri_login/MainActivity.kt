@@ -68,6 +68,10 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(APIService::class.java)
 
+
+        //Todo: utilizza Retrofit per effettuare una chiamata di rete per ottenere le informazioni del cliente.
+        // Vengono impostati gli header della richiesta e vengono gestite le risposte e gli errori.
+
         val headers = HashMap<String, String>()
         headers.put("Authorization", "Bearer $token")
         headers.put("Content-Type", "application/json; charset=utf-8")

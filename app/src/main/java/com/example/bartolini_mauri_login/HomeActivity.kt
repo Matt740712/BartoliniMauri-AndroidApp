@@ -47,6 +47,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    //Todo: viene ottenuto il nome dell'utente dalla Intent e viene impostato il testo di un TextView con il relativo valore.
     private fun getContracts(id: String, token: String) {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -58,12 +59,16 @@ class HomeActivity : AppCompatActivity() {
         headers.put("Authorization", "Bearer $token")
         val retrofitData = retrofitBuilder.getContracts(headers, id)
 
+        //Todo:  viene ottenuto l'ID dell'utente e il token di autenticazione dalle SharedPreferences.
+
         retrofitData.enqueue(object : Callback<PolicyResponse?> {
             override fun onResponse(
                 call: Call<PolicyResponse?>,
                 response: Response<PolicyResponse?>
             ) {
                 val responseBody = response.body()
+
+                //Todo : viene controllato se l'ID e il token sono validi e, in caso affermativo, viene chiamato il metodo "getContracts" per i dati Utente
 
                 if (responseBody?.data !== null) {
                     viewModel.policies.value = responseBody.data

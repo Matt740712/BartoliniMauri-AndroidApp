@@ -1,4 +1,5 @@
 package com.example.bartolini_mauri_login
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -29,7 +30,7 @@ class PreventiviActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         annoAutoEditText = findViewById(R.id.annoAuto)
         targaAutoEditText = findViewById(R.id.targaAuto)
-        vehicleSpinner = findViewById(R.id.vehicle_spinner)
+        vehicleSpinner = findViewById(R.id.veicoloSpinner)
         radioGroup = findViewById(R.id.radio_group)
         preventivoButton = findViewById(R.id.Preventivo)
 
@@ -45,6 +46,9 @@ class PreventiviActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             override fun afterTextChanged(s: Editable?) {
                 val annoAuto = s.toString().toIntOrNull()
                 preventivoButton.isEnabled = annoAuto != null && annoAuto in 1900..2023
+                if (annoAuto != null && annoAuto > 2023) {
+                    Toast.makeText(applicationContext, "Anno non valido", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -64,16 +68,23 @@ class PreventiviActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun calcolaPreventivo() {
+        var costoAssicurazione = 0 // Resetta la variabile costoAssicurazione
+
         val annoAuto = annoAutoEditText.text.toString().toIntOrNull()
         val targaAuto = targaAutoEditText.text.toString()
         val vehicleType = vehicleSpinner.selectedItem.toString()
         val selectedRadioButtonId = radioGroup.checkedRadioButtonId
-        var costoAssicurazione = 300
 
         if (annoAuto != null && annoAuto < 2000) {
             costoAssicurazione += 500
         } else if (annoAuto != null && annoAuto < 2023) {
             costoAssicurazione += 300
+        }
+
+        when (vehicleType) {
+            "Automobile" -> costoAssicurazione += 200
+            "Motociclo" -> costoAssicurazione += 100
+            "Autocarro" -> costoAssicurazione += 400
         }
 
         when (selectedRadioButtonId) {
@@ -82,13 +93,12 @@ class PreventiviActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             R.id.Eletrico3 -> costoAssicurazione += 10
         }
 
-        val preventivo = " Futuro Preventivo di: $costoAssicurazione €"
+        val preventivo = "Futuro Preventivo di: $costoAssicurazione €"
         Toast.makeText(this, preventivo, Toast.LENGTH_SHORT).show()
     }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-        val selectedVehicle = parent.getItemAtPosition(position).toString()
-        Toast.makeText(this, "Hai selezionato: $selectedVehicle", Toast.LENGTH_SHORT).show()
+        // Azioni da eseguire alla selezione di un elemento dallo spinner
     }
 
     override fun onNothingSelected(parent: AdapterView<*>) {
